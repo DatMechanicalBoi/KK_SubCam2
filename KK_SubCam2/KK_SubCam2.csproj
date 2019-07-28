@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\..\..\..\..\illusion\Koikatu\Koikatu_Data\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
     <Reference Include="BepInEx">
       <HintPath>..\..\..\..\..\..\illusion\Koikatu\BepInEx\core\BepInEx.dll</HintPath>
     </Reference>

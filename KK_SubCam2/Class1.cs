@@ -38,13 +38,18 @@ public class KK_SubCam : BaseUnityPlugin
 
     private bool SubCam_Enabled = false;
 
+    private bool SubCam_Control_Enabled = false;
 
-
+    
     #region Config properties
 
     [DisplayName("Activation")]
     [Description("Sets it in motion.")]
     public static SavedKeyboardShortcut SubCam_EnableKey { get; private set; }
+
+    [DisplayName("Activation")]
+    [Description("Sets it in motion.")]
+    public static SavedKeyboardShortcut SubCam_Control_EnableKey { get; private set; }
 
     #endregion
 
@@ -52,6 +57,8 @@ public class KK_SubCam : BaseUnityPlugin
     {
 
         SubCam_EnableKey = new SavedKeyboardShortcut("SubCam key", this, new KeyboardShortcut(KeyCode.Keypad1));
+
+        SubCam_Control_EnableKey = new SavedKeyboardShortcut("SubCam Control key", this, new KeyboardShortcut(KeyCode.Keypad2));
 
     }
 
@@ -75,6 +82,24 @@ public class KK_SubCam : BaseUnityPlugin
             else
             {
                 SubCam_Kill();
+            }
+
+        }
+
+        if (SubCam_Control_EnableKey.IsDown())
+        {
+            SubCam_Control_Enabled = !SubCam_Control_Enabled;
+
+            if (SubCam_Control_Enabled)
+            {
+
+                CamControl_Init();
+
+            }
+            else
+            {
+
+            
             }
 
         }
@@ -108,6 +133,15 @@ public class KK_SubCam : BaseUnityPlugin
         }
 
     }
+
+    void CamControl_Init()
+    {///// Does nothing yet /////
+        var ccv2 = GetComponent<CameraControl_Ver2>();
+
+        ccv2.enabled = false;
+
+    }
+
 
     void OnDestroy()
     {
